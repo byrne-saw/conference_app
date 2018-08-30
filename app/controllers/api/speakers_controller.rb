@@ -4,5 +4,4 @@ class Api::SpeakersController < ApplicationController
     @id_6 = Speaker.find_by(id: 6)
     render 'id_6.json.jbuilder'
   end
-
 end
