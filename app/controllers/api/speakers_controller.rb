@@ -15,6 +15,8 @@ class Api::SpeakersController < ApplicationController
                             first_name: params[:first_name],
                             last_name: params[:last_name],
                             email: params[:email]
+                            gender: params[:gender]
+                            age: params[:age]
                             )
     if @speaker.save
       render "show.json.jbuilder"
@@ -33,6 +35,8 @@ class Api::SpeakersController < ApplicationController
     @speaker.first_name = params[:first_name] || @speaker.first_name
     @speaker.last_name = params[:last_name] || @speaker.last_name
     @speaker.email = params[:email] || @speaker.email
+    @speaker.gender = params[:gender] || @speaker.gender
+    @speaker.age = params[:age] || @speaker.age
 
     if @speaker.save
       render "show.json.jbuilder"
