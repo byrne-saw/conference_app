@@ -4,3 +4,5 @@ json.agenda meeting.agenda
 json.time meeting.time
 json.location meeting.location
 json.remote meeting.remote
+json.created_at meeting.created_at
+json.updated_at meeting.updated_at

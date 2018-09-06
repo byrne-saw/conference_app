@@ -1,6 +1,6 @@
 class Api::MeetingsController < ApplicationController
 
-    def meetings_all
+  def meetings_all
     @meetings_all = Meeting.all
     render 'meetings_all.json.jbuilder'
   end
@@ -41,7 +41,7 @@ class Api::MeetingsController < ApplicationController
     if @meeting.save
       render "show.json.jbuilder"
     else
-      render json: {errors: @meeting.errors.fullmessages}, status: :unprocessable_entity
+      render json: {errors: @meeting.errors.full_messages}, status: :unprocessable_entity
     end
   end
 

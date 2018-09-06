@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     patch "/meetings/:id" => 'meetings#update'
     delete "/meetings/:id" => 'meetings#destroy'
 
-
+    get "/speakers" => 'speakers#index'
+    post "/speakers" => 'speakers#create'
+    get "/speakers/:id" => 'speakers#show'
+    patch "/speakers/:id" => 'speakers#update'
+    delete "/speaers/:id" => 'speakers#destroy'
   end
 end
