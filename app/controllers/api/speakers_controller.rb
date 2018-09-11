@@ -6,7 +6,7 @@ class Api::SpeakersController < ApplicationController
   end
 
   def index
-    @speakers = Speaker.all
+    @speakers = Speaker.all.order(age: :asc)
     render 'index.json.jbuilder'
   end
 
@@ -14,8 +14,8 @@ class Api::SpeakersController < ApplicationController
     @speaker = Speaker.new(
                             first_name: params[:first_name],
                             last_name: params[:last_name],
-                            email: params[:email]
-                            gender: params[:gender]
+                            email: params[:email],
+                            gender: params[:gender],
                             age: params[:age]
                             )
     if @speaker.save
