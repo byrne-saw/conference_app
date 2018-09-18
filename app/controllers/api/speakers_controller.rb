@@ -1,4 +1,5 @@
 class Api::SpeakersController < ApplicationController
+  before_action :authenticate_admin, except: [:index, :show]
 
   def id_6_action
     @id_6 = Speaker.find_by(id: 6)

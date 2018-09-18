@@ -1,24 +1,26 @@
 class Api::MeetingsController < ApplicationController
+  before_action :authenticate_admin, except: [:index, :show]
 
   def meetings_all
     @meetings_all = Meeting.all
     render 'meetings_all.json.jbuilder'
   end
-  
+
   def index
-    @meetings = Meeting.where("remote = true")
+    # @meetings = Meeting.where("remote = true")
+    @meetings = Meeting.all
     render 'index.json.jbuilder'
   end
 
   def create
     @meeting = Meeting.new(
-                          title: params[:title],
-                          agenda: params[:agenda],
-                          time: params[:time],
-                          location: params[:location], 
-                          remote: params[:remote],
-                          speaker_id: params[:speaker_id]
-                          )
+      title: params[:title],
+      agenda: params[:agenda],
+      time: params[:time],
+      location: params[:location],
+      remote: params[:remote],
+      speaker_id: params[:speaker_id]
+    )
     if @meeting.save
       render "show.json.jbuilder"
     else
