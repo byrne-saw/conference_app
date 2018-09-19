@@ -20,13 +20,33 @@
 # end 
 
 
-100.times do 
+# 100.times do 
 
 
-  meeting = Meeting.new(
-                        title: FFaker::Product.product,
-                        agenda: FFaker::Job.title,
-                        time: FFaker::Time.date
-                        )
-  meeting.save
+#   meeting = Meeting.new(
+#                         title: FFaker::Product.product,
+#                         agenda: FFaker::Job.title,
+#                         time: FFaker::Time.date
+#                         )
+#   meeting.save
+# end
+
+
+Topic.create!([
+              {name: "Stand Up"},
+              {name: "Birthing"},
+              {name: "Investigations into Misconduct"},
+              {name: "The State of Things"},
+              {name: "End Times"}, 
+              {name: "Remembering the Alamo"} 
+              ])
+
+topic_ids = Topic.pluck(:id)
+
+Meeting.all.each do |meeting|
+  sampled_ids = topic_ids.sample(rand(2..3))
+
+  sampled_ids.each do |topic_id|
+    MeetingTopic.create!(meeting_id: meeting.id, topic_id: topic_id)
+  end
 end
